@@ -48,10 +48,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ScintillaNet, Version=2.2.3581.19319, Culture=neutral, PublicKeyToken=948d6c9751444115, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>K:\Software\ScintillaNet\ScintillaNet.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -82,8 +78,6 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MittoClass.cs" />
-    <Compile Include="MittoInterpreter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAboutBox.resx">
@@ -152,6 +146,7 @@
     <None Include="app.config" />
     <None Include="Resources\NewDocumentHS.png" />
     <None Include="Resources\NewCardHS.png" />
+    <None Include="Resources\NewDocumentHS.BMP" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Mitto Developer.ico" />
