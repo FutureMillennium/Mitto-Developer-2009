@@ -1,0 +1,131 @@
+.LOG
+
+19.12.2008
+-----------
+0.1.0.0
+========
++ Basic IDE
++ New, Open, Save, Cut, Copy, Paste, Undo, Redo menu items
++ toolbars save their positions
+20.12.2008
+-----------
++ New, Open, Save, Cut, Copy, Paste, Undo, Redo toolbar buttons
++ Basic parsing
++ "", () parsing
++ Run, Pause, Stop, Restart toolbar buttons and menu items
++ buffer
++ numbers and strings evaluate to themselves
++ command queue
++ "Clear runtime" button
++ window saves its position and size
+21.12.2008
+-----------
+0.1.0.1
+========
++ endbuffer command
++ check, ; command
+* Interpret menu renamed to "Run" menu
++ + command
++ #, #"" comments
++ * command
+0.1.0.2
+========
++ //, /**/ comments
+0.1.0.3
+========
++ - command
+* endbuffer calls "check" before emptying the buffer
+* old endbuffer now "clearbuffer"
+0.1.0.4
+========
++ input signature ">"
+* changed buffer signature from ">" to "#"
+* changed queue signature from ">" to "@"
++ splitters save its positions
++ display, echo, print command
+* queue not reversed when checking
+0.1.0.5
+========
++ Previous and Next input (Esc+P, Esc+N)
++ New logo and icon
++ New about dialog
+22.12.2008
+-----------
+* Input history saves only 20 previous inputs
+* Fixed: "Next input" if used first skipped to 2nd item
++ Runtime shows up on evaluating input or Running if hidden
+* Better parsing and evaluating
+0.1.0.6
+========
++ Correct envelope "()" evaluation
+* "Save As…" new keyboard shortcut Ctrl+Shift+S
+* "About" new keyboard shortcut Ctrl+F1
+10.1.2009
+----------
+0.1.0.7
+========
+* Rewrote the parser, now correctly evaluates envelopes, comments and texts
++ Parses $variables correctly
+14.1.2009
+----------
++ / command
+
+0:42 10.12.2009
+0.1.0.8
+========
+* New Mitto, new parser
+
+12:37 10.12.2009
++ showing word under cursor in definitions
+(fixed) BUG: // in ( ) doesn't work correctly, need to rewrite the parser anyway
+* using Scintilla for the definitions editor
+- showing word under cursor in definitions
+* fixed strings beginning with a space parsing
+* comments are ignored during parsing
+* new parser finished
+- all commands removed
++ skip ; print + - * / end eval next commands
+BUG? #(1 2) style comments don't work
+* strings are unescaped during parsing
+
+11:30 11.12.2009
+* numbers are converted during parsing
+* simplified string and number taking, rewrote the functions
++ printline command
+* fixed parsing of last letters in envelopes
++ variables (and thus functions), = command
++ clear, if, <, >, ==, count, !=, random, <=, >= command
+
+0:03 14.12.2009
+* fixed crash when 'else' in 'if' was a number
+* true and false now convert to strings on non-strict string taking
++ unsetall, /n, countp, unset, take command
+* fixed bound evaluation of envelopes getting bad source, position and skip (variables, next)
+* one less int in =
+
+1:05 15.12.2009
++ while, until, !, taked command
+
+19:46 16.12.2009
+* fixed -1 taked
+* ! negates the whole buffer
+* true and false don't get checked now
+* buffer is checked from left to right to prevent symbol order switching
+* fixed eval string taking
+* single buffer instead of multiple buffers
++ local variables
++ local, =l command
+(+ variable descriptions, desc command)
+
+Current commands:
+------------------
+skip ; print + - * end / eval next printline = clear if < > == count != random <= >= unsetall /n countp unset take while until ! taked local =l
+
+Buffer objects:
+----------------
+double - number
+string
+List<object> - array
+MittoClass - class instance
+true false - boolean
+null

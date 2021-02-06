@@ -1,0 +1,159 @@
+/* Comments are written like this */
+#Comment
+// Full-line comment
+#"These will be ignored"
+
+5
+endbuffer // Ends the buffer, printing it out
+//# 5
+
+"This is a string!"
+endbuffer
+//# "This is a string!"
+
+"Welcome to Mitto!" display
+//Welcome to Mitto!
+
+1 2
+endbuffer
+//# 1
+//# 2
+
+1 + 2 + 3 + 4
+endbuffer
+//# 10
+
++ 1 2 3 4
+endbuffer
+//# 10
+
+1 2 3 4 +
+endbuffer
+//# 10
+
+2 1 2 + 4 *
+endbuffer
+//There are no priorities in operations - first come, first serve
+//(2 + 1 + 2) * 4 =
+//# 20
+
+2 (1 2 +) 4 *
+endbuffer
+//2 * (1 + 2) * 4 =
+//# 24
+
+one (two inside) three
+one (two (second level) inside) three
+one (two (second (third level) level) inside) three
+one (two (second (third level) level) (another second level) inside) three
+
+// UNUSED: Obsolete for the new parser
+// The parsing priorities are:
+// /**/ > // > () > "" > anything else
+
+
+19.12.2008
+-----------
+0.1.0.0
+========
++ Basic IDE
++ New, Open, Save, Cut, Copy, Paste, Undo, Redo menu items
++ toolbars save their positions
+20.12.2008
+-----------
++ New, Open, Save, Cut, Copy, Paste, Undo, Redo toolbar buttons
++ Basic parsing
++ "", () parsing
++ Run, Pause, Stop, Restart toolbar buttons and menu items
++ buffer
++ numbers and strings evaluate to themselves
++ command queue
++ "Clear runtime" button
++ window saves its position and size
+21.12.2008
+-----------
+0.1.0.1
+========
++ endbuffer command
++ check, ; command
+* Interpret menu renamed to "Run" menu
++ + command
++ #, #"" comments
++ * command
+0.1.0.2
+========
++ //, /**/ comments
+0.1.0.3
+========
++ - command
+* endbuffer calls "check" before emptying the buffer
+* old endbuffer now "clearbuffer"
+0.1.0.4
+========
++ input signature ">"
+* changed buffer signature from ">" to "#"
+* changed queue signature from ">" to "@"
++ splitters save its positions
++ display, echo, print command
+* queue not reversed when checking
+0.1.0.5
+========
++ Previous and Next input (Esc+P, Esc+N)
++ New logo and icon
++ New about dialog
+22.12.2008
+-----------
+* Input history saves only 20 previous inputs
+* Fixed: "Next input" if used first skipped to 2nd item
++ Runtime shows up on evaluating input or Running if hidden
+* Better parsing and evaluating
+0.1.0.6
+========
++ Correct envelope "()" evaluation
+* "Save As…" new keyboard shortcut Ctrl+Shift+S
+* "About" new keyboard shortcut Ctrl+F1
+10.1.2009
+----------
+0.1.0.7
+========
+* Rewrote the parser, now correctly evaluates envelopes, comments and texts
++ Parses $variables correctly
+14.1.2009
+----------
++ / command
+
+Current commands:
+------------------
++ - * / check ; echo print display endbuffer clearbuffer
+
+Known bugs and missing features:
+---------------------------------
+• (Done, 22.12.2008) Doesn't evaluate envelopes () correctly
+• (Done, 22.12.2008) Doesn't allow multiline constructions
+• (Done, 22.12.2008) Treats "." as a space in letters
+• (Done, 21.12.2008) Doesn't save the splitter positions
+- Doesn't support \" in strings
+- Opening and saving files doesn't work
+- No help
+- No options
+• (Done, 21.12.2008) Needs a better About dialog
+- No pausing, stopping and restarting in the runtime
+• (Done, 22.12.2008) Runtime doesn't show up on evaluating input or Running
+- No syntax highlighting
+- No compiling
+- Formatted pasting shouldn't be allowed
+- History limit should be adjustable
+
+TODO:
+------
+- single quoted texts - 'text'
+- variables
+- parsing variables inside texts
+- 'if'
+- 'cond'
+- 'switch'
+- functions
+- cycles
+- 'eval'
+- 'val' - convert $variable to its value
+- 'parse' - parse variables inside string
